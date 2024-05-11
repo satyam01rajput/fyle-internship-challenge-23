@@ -1,5 +1,64 @@
-<div class="grid h-screen place-items-center">
-  <div class="font-bold text-3xl">
-    Fyle Internship Challenge
+<div class="text">
+  <h1>Search Git-hub User</h1>
+</div><br>
+
+
+
+<div>
+  <form (ngSubmit)="onSearch()">
+    <input class="new cursor-pointer " type="search" name="username" [(ngModel)]="username"
+      placeholder="Search GitHub User Here">
+    <input class="new1" type="submit" value="Search">
+  </form>
+</div>
+
+
+<div *ngIf="isLoading$ | async; else content">
+  <!-- Loading indicator -->
+  <p class="text-center mt-5">Loading...</p>
+</div>
+
+
+<ng-template #content>
+
+<div *ngIf="user!=null; else elseBlock">
+  <div *ngIf="user" class="main1">
+    <div class="content">
+      <img class="circle-img" src={{user.avatar_url}} /><br>
+      <div class="cent">{{user.html_url}}</div>
+    </div>
+    <br>
+
+    <div class="des">
+      <p>{{user.name}}</p>
+      <p>{{user.location}}</p>
+      <p class="flex max-w-[600px]">{{user.bio}}</p>
+      <p>{{user.twitter_username}}</p>
+    </div>
   </div>
 </div>
+<br><br><br>
+
+
+<div class="all">
+  <div class="grid grid-cols-2">
+    <div *ngFor="let repo of repos | paginate: {itemsPerPage:perPage,currentPage:currentPage}" class="first mt-5">
+      <div class="box text-blue-600 font-bold text-lg">
+        {{repo.name}}
+      </div>
+      <div class="descr truncate"> {{repo.description}}</div><br>
+      <div class="internal">
+        <div *ngIf="repo.language!=null" class="box1">{{repo.language}}</div>
+        <div *ngFor="let topic of repo.topic" class="box1">{{repo.language}}</div>
+        
+      </div>
+      
+    </div>
+  </div>
+  <div class="satya mt-5" ><pagination-controls (pageChange)="currentPage=$event"></pagination-controls></div>
+</div>
+<br><br>
+
+
+</ng-template>
+<ng-template #elseBlock><p class="text-center mt-5"> {{res}} </p></ng-template>
