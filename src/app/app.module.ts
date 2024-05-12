@@ -16,7 +16,7 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
     HttpClientModule,
     FormsModule,
     NgxPaginationModule,
-    NgxSkeletonLoaderModule
+    NgxSkeletonLoaderModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

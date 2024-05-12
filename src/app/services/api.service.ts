@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { catchError, finalize } from 'rxjs/operators';
@@ -12,10 +12,15 @@ export class ApiService {
 
   private loadingSubject = new BehaviorSubject<boolean>(false);
   public loading$ = this.loadingSubject.asObservable();
-
+  private headers: HttpHeaders
   constructor(
     private httpClient: HttpClient
-  ) { }
+  ) {
+    this.headers= new HttpHeaders({
+      'Authorization':'Bearer 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'
+    });
+
+   }
 
   private setLoading(loading: boolean): void {
     this.loadingSubject.next(loading);

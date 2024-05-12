@@ -12,10 +12,25 @@
   </form>
 </div>
 
-
-<div *ngIf="isLoading$ | async; else content">
+<div *ngIf="isLoading$ | async; else content" class="item">
   <!-- Loading indicator -->
-  <p class="text-center mt-5">Loading...</p>
+  <!-- <p class="text-center mt-5">Loading...</p> -->
+  
+  <ngx-skeleton-loader count="1" appearance="circle" [theme]="{height: '150px',width:'150px', margin:'15px 0px 0px 150px', }" ></ngx-skeleton-loader>
+  <ngx-skeleton-loader count="1" appearance="line" [theme]="{height: '100px',width:'150px', margin:'15px 0px 25px 80px', }" ></ngx-skeleton-loader>
+  <div>
+  <ngx-skeleton-loader count="1" appearance="line" [theme]="{height: '15px',width:'200px', margin:'15px 0px 25px 150px', }" ></ngx-skeleton-loader>
+
+  </div>
+  
+  <div class="all">
+    <div class="grid grid-cols-2 mt-20">
+        <ngx-skeleton-loader count="1" appearance="line" [theme]="{height: '120px',width:'400px', margin:'15px 0px 0px 0px', }" ></ngx-skeleton-loader>
+        <ngx-skeleton-loader count="1" appearance="line" [theme]="{height: '120px',width:'400px', margin:'15px 0px 0px 0px', }" ></ngx-skeleton-loader>
+        <ngx-skeleton-loader count="1" appearance="line" [theme]="{height: '120px',width:'400px', margin:'15px 0px 0px 0px', }" ></ngx-skeleton-loader>
+        <ngx-skeleton-loader count="1" appearance="line" [theme]="{height: '120px',width:'400px', margin:'15px 0px 0px 0px', }" ></ngx-skeleton-loader>
+    </div>
+  </div>
 </div>
 
 
